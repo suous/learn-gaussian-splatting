@@ -1,5 +1,5 @@
 [project]
-name = "learn-gaussian-splatting-together"
+name = "learn-gaussian-splatting"
 version = "0.1.0"
 description = "Learn Gaussian Splatting"
 readme = "README.md"
