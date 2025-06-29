@@ -254,6 +254,11 @@ The parameters of the Gaussians are optimized to reconstruct a scene from a set 
     -   **Splitting:** Splitting large Gaussians in areas with high variance.
     -   **Pruning:** Removing Gaussians that are nearly transparent (very low opacity).
 
+## TODO
+
+- [ ] Understand and implement tile based rendering.
+- [ ] Train from scratch with pytorch code.
+
 ## References
 
 ### Papers
