@@ -22,6 +22,94 @@
 ===============================================================================
 ```
 
+## Getting Started
+
+### Installation
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/suous/learn-gaussian-splatting.git
+cd learn-gaussian-splatting
+```
+
+2. Install the required dependencies.
+
+```bash
+uv sync
+```
+
+### Data Download
+
+Download the COLMAP and PLY data from [Release v1.0](https://github.com/suous/learn-gaussian-splatting/releases/tag/v1.0):
+```bash
+wget -qO-  https://github.com/suous/learn-gaussian-splatting/releases/download/v1.0/data.tgz  | tar xz -C .
+```
+
+This will create a data directory with the following structure:
+
+```bash
+data
+├── colmap
+│   ├── images
+│   │   ├── 000000.png
+│   │   ├── ..........
+│   │   └── 000024.png
+│   └── sparse
+│       └── 0
+│           ├── cameras.bin
+│           ├── images.bin
+│           ├── points3D.bin
+│           └── points3D.ply
+└── point_cloud.ply
+```
+
+```bash
+# python gaussian.py
+==================================================
+          Gaussian Splatting Statistics
+==================================================
+
+    🎯 Positions  : (37942, 3)
+    🔄 Rotations  : (37942, 4)
+    📏 Scalings   : (37942, 3)
+    💫 Opacities  : (37942, 1)
+    🎨 Features   : (37942, 3, 16)
+    📊 Covariances: (37942, 3, 3)
+    
+--------------------------------------------------
+Total Gaussians: 37,942
+SH Degree      : 3
+==================================================
+```
+
+### Usage
+
+1. Render an Image
+
+```bash
+python main.py --image_number 0
+```
+
+This will display the original image and the rendered image using matplotlib.
+
+2. Generate animation
+
+```bash
+python main.py --generate_animation
+```
+
+```bash
+ffmpeg -framerate 8 -pattern_type glob -i "*.png" -vf "fps=10,scale=640:-1,split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse" -loop 0 animation.gif
+```
+
+### Results
+
+![keyboard](./images/reconstruct-keyboard.png)
+
+![animation](./images/gaussian-animation.gif)
+
+
 ## Basic Idea of 3D Gaussian Splatting
 
 3D Gaussian Splatting (3DGS) is a novel method for representing and rendering 3D scenes, introduced in the paper ["3D Gaussian Splatting for Real-Time Radiance Field Rendering"](https://repo-sam.inria.fr/fungraph/3d-gaussian-splatting/downloads/3d_gaussian_splatting_high.pdf) by Kerbl et al. (2023). It has gained significant attention as an alternative to Neural Radiance Fields (NeRFs) due to its impressive rendering speed and quality.
@@ -160,53 +248,6 @@ The parameters of the Gaussians are optimized to reconstruct a scene from a set 
     -   **Cloning:** Duplicating small Gaussians in areas that are under-reconstructed.
     -   **Splitting:** Splitting large Gaussians in areas with high variance.
     -   **Pruning:** Removing Gaussians that are nearly transparent (very low opacity).
-
-## Render
-
-![keyboard](./images/reconstruct-keyboard.png)
-
-![animation](./images/gaussian-animation.gif)
-
-## Data Download
-Download the COLMAP and PLY data from [Release v1.0](https://github.com/suous/learn-gaussian-splatting/releases/tag/v1.0):
-```bash
-wget -qO-  https://github.com/suous/learn-gaussian-splatting/releases/download/v1.0/data.tgz  | tar xz -C .
-```
-
-```bash
-data
-├── colmap
-│   ├── images
-│   │   ├── 000000.png
-│   │   ├── ..........
-│   │   └── 000024.png
-│   └── sparse
-│       └── 0
-│           ├── cameras.bin
-│           ├── images.bin
-│           ├── points3D.bin
-│           └── points3D.ply
-└── point_cloud.ply
-```
-
-```bash
-# python gaussian.py
-==================================================
-          Gaussian Splatting Statistics
-==================================================
-
-    🎯 Positions  : (37942, 3)
-    🔄 Rotations  : (37942, 4)
-    📏 Scalings   : (37942, 3)
-    💫 Opacities  : (37942, 1)
-    🎨 Features   : (37942, 3, 16)
-    📊 Covariances: (37942, 3, 3)
-    
---------------------------------------------------
-Total Gaussians: 37,942
-SH Degree      : 3
-==================================================
-```
 
 ## References
 
