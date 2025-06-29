@@ -39,6 +39,12 @@ cd learn-gaussian-splatting
 uv sync
 ```
 
+3. Activate the environemtn.
+
+```bash
+source .venv/bin/activate
+```
+
 ### Data Download
 
 Download the COLMAP and PLY data from [Release v1.0](https://github.com/suous/learn-gaussian-splatting/releases/tag/v1.0):
