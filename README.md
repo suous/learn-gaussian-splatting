@@ -107,8 +107,7 @@ ffmpeg -framerate 8 -pattern_type glob -i "*.png" -vf "fps=10,scale=640:-1,split
 
 ![keyboard](./images/reconstruct-keyboard.png)
 
-![animation](./images/gaussian-animation.gif)
-
+<img src="./images/gaussian-animation.gif" width="100%">
 
 ## Basic Idea of 3D Gaussian Splatting
 
