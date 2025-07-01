@@ -47,9 +47,9 @@ source .venv/bin/activate
 
 ### Data Download
 
-Download the COLMAP and PLY data from [Release v1.0](https://github.com/suous/learn-gaussian-splatting/releases/tag/v1.0):
+Download the COLMAP and PLY data from [Release v1.0.0](https://github.com/suous/learn-gaussian-splatting/releases/tag/v1.0.0):
 ```bash
-wget -qO-  https://github.com/suous/learn-gaussian-splatting/releases/download/v1.0/data.tgz  | tar xz -C .
+wget -qO-  https://github.com/suous/learn-gaussian-splatting/releases/download/v1.0.0/data.tgz  | tar xz -C .
 ```
 
 This will create a data directory with the following structure:
