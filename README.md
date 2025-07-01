@@ -33,13 +33,13 @@ git clone https://github.com/suous/learn-gaussian-splatting.git
 cd learn-gaussian-splatting
 ```
 
-2. Install the required dependencies.
+1. Install the required dependencies.
 
 ```bash
 uv sync
 ```
 
-3. Activate the environemtn.
+1. Activate the environment.
 
 ```bash
 source .venv/bin/activate
@@ -99,7 +99,7 @@ python main.py --image_number 0
 
 This will display the original image and the rendered image using matplotlib.
 
-2. Generate animation
+1. Generate animation
 
 ```bash
 python main.py --generate_animation
@@ -113,7 +113,7 @@ ffmpeg -framerate 8 -pattern_type glob -i "*.png" -vf "fps=10,scale=640:-1,split
 
 ![keyboard](./images/reconstruct-keyboard.png)
 
-<img src="./images/gaussian-animation.gif" width="100%">
+<img alt="gaussian animation" src="./images/gaussian-animation.gif" width="100%">
 
 ## Basic Idea of 3D Gaussian Splatting
 
@@ -247,7 +247,7 @@ $$
 
 The parameters of the Gaussians are optimized to reconstruct a scene from a set of input images with known camera poses. The training process involves:
 
-1.  **Initialization:** The process starts with a sparse point cloud generated from the input images using Structure-from-Motion (SfM), for example, with COLMAP. These points are used to initialize the positions ($\mu$) of the Gaussians.
+1.  **Initialization:** The process starts with a sparse point cloud generated from the input images using Structure-from-Motion (SfM), for example, with [COLMAP](https://github.com/colmap/colmap). These points are used to initialize the positions ($\mu$) of the Gaussians.
 2.  **Optimization:** The parameters of the Gaussians (position, covariance, color, opacity) are optimized using stochastic gradient descent. The loss function is typically a combination of an L1 loss and a D-SSIM (Structural Dissimilarity Index) term, comparing the rendered images with the training images.
 3.  **Adaptive Densification:** During optimization, the set of Gaussians is adaptively modified to better represent the scene. This involves:
     -   **Cloning:** Duplicating small Gaussians in areas that are under-reconstructed.
