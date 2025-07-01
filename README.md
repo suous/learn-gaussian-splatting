@@ -33,13 +33,13 @@ git clone https://github.com/suous/learn-gaussian-splatting.git
 cd learn-gaussian-splatting
 ```
 
-1. Install the required dependencies.
+2. Install the required dependencies.
 
 ```bash
 uv sync
 ```
 
-1. Activate the environment.
+3. Activate the environment.
 
 ```bash
 source .venv/bin/activate
@@ -91,7 +91,7 @@ SH Degree      : 3
 
 ### Usage
 
-1. Render an Image
+- Render an Image
 
 ```bash
 python main.py --image_number 0
@@ -99,7 +99,7 @@ python main.py --image_number 0
 
 This will display the original image and the rendered image using matplotlib.
 
-1. Generate animation
+- Generate animation
 
 ```bash
 python main.py --generate_animation
